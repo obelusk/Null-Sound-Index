@@ -1,0 +1,60 @@
+{
+  "name": "null-sound-index",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.renderer.json && copyfiles -u 1 \"src/renderer/*.html\" \"src/renderer/*.css\" dist",
+    "start": "npm run build && electron .",
+    "dist": "npm run build && electron-builder",
+    "release": "npm run build && electron-builder --publish always"
+  },
+  "keywords": [],
+  "author": "Sean Lusk",
+  "description": "Null Sound Index — part of the Null Suite. Browse and preview sound files in a folder without leaving the app.",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "copyfiles": "^2.4.1",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.35.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "wavesurfer.js": "^7.12.8"
+  },
+  "build": {
+    "appId": "com.nullsuite.nullsoundindex",
+    "productName": "Null Sound Index",
+    "directories": {
+      "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "obelusk",
+      "repo": "Null-Sound-Index",
+      "releaseType": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "build/icon.png"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Null Sound Index"
+    }
+  }
+}

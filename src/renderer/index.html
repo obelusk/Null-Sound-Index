@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' soundfile: data:; script-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self' soundfile: blob:; connect-src 'self' soundfile: blob:;" />
+  <title>Null Sound Index</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="toolbar">
+      <button id="pick-folder-btn">Open Folder</button>
+      <span id="current-folder"></span>
+      <button id="enter-minimal-btn" title="Enter Minimal Mode">Minimal Mode</button>
+    </header>
+    <div id="minimal-breadcrumb">
+      <span id="breadcrumb-text"></span>
+      <button id="exit-minimal-btn" title="Exit Minimal Mode (Esc)">Exit Minimal Mode</button>
+    </div>
+    <div id="main">
+      <aside id="tree-pane"></aside>
+      <section id="list-pane">
+        <ul id="file-list"></ul>
+      </section>
+    </div>
+    <footer id="player-bar">
+      <div id="waveform"></div>
+      <div id="controls">
+        <button id="play-btn">▶</button>
+        <button id="loop-btn" title="Loop">⟲</button>
+        <span id="now-playing">No file selected</span>
+        <span id="time-display">0:00 / 0:00</span>
+      </div>
+    </footer>
+  </div>
+
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+    <span>Loading Null Sound Index…</span>
+  </div>
+
+  <div id="first-run-overlay" class="hidden">
+    <div id="first-run-modal">
+      <h2>Welcome to Null Sound Index</h2>
+      <p>Set a default folder to open automatically each time the app starts?</p>
+      <label class="settings-checkbox">
+        <input type="checkbox" id="first-run-dont-show-again" />
+        <span>Do not show again</span>
+      </label>
+      <div class="settings-actions">
+        <button id="first-run-skip-btn" type="button">Not now</button>
+        <button id="first-run-choose-btn" type="button">Choose Folder</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="license-overlay" class="hidden">
+    <div id="license-modal">
+      <h2>License</h2>
+      <div id="license-text">
+        <p><strong>Null Sound Index</strong> — part of the Null Suite</p>
+        <p>Copyright © 2026 Sean Lusk</p>
+        <p>
+          Permission is granted, free of charge, to any person obtaining a copy of this
+          software to download, use, copy, and run it on their own devices for personal or
+          commercial purposes, with no restrictions on the number of devices or installations.
+        </p>
+        <p>
+          You own your copy of this software outright. You are free to modify it, study how it
+          works, build on it, and change its behavior in any way you see fit, including
+          modifying or redistributing the source code, for yourself or others.
+        </p>
+        <p>
+          This software is provided "as is," without warranty of any kind, express or implied.
+          The author verifies that the software works as intended only in the form it is
+          originally distributed. Any modifications you or others make to the software are not
+          reviewed, tested, or verified by the author, and the author makes no representation
+          that a modified version is safe, stable, or compatible with your system. You assume
+          all risk for any changes you make or install from third parties.
+        </p>
+        <p>
+          In no event shall the author be liable for any claim, damages, or other liability
+          arising from the use of this software, modified or unmodified.
+        </p>
+      </div>
+      <div class="settings-actions">
+        <button id="license-close-btn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings-overlay" class="hidden">
+    <div id="settings-modal">
+      <h2>User Settings</h2>
+
+      <label class="settings-field">
+        <span>Accent color</span>
+        <input type="color" id="setting-accent-color" />
+      </label>
+
+      <label class="settings-field">
+        <span>Default folder</span>
+        <div class="settings-folder-row">
+          <input type="text" id="setting-default-folder" readonly placeholder="None set" />
+          <button id="setting-browse-folder-btn" type="button">Browse</button>
+          <button id="setting-clear-folder-btn" type="button">Clear</button>
+        </div>
+      </label>
+
+      <label class="settings-checkbox">
+        <input type="checkbox" id="setting-expand-all" />
+        <span>Expand all subfolders when selecting a folder / opening the app</span>
+      </label>
+
+      <label class="settings-checkbox">
+        <input type="checkbox" id="setting-hide-empty-folders" />
+        <span>Hide folders with no sound files (folders with sounds in subfolders still show)</span>
+      </label>
+
+      <div class="settings-field">
+        <span>Keyboard shortcuts</span>
+        <div id="shortcuts-list"></div>
+      </div>
+
+      <div class="settings-actions">
+        <button id="settings-cancel-btn" type="button">Cancel</button>
+        <button id="settings-save-btn" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
