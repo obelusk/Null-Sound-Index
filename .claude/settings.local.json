@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); cd \"C:\\\\Users\\\\seanm\\\\OneDrive\\\\Desktop\\\\Sound_Index\"; npm install --save-dev electron typescript electron-builder @types/node)",
-      "Bash(cd \"/c/Users/seanm/OneDrive/Desktop/Sound_Index\" && grep -n \"draggable\\\\|dragstart\\\\|startDrag\" src/renderer/app.ts)",
-      "Bash(curl -s https://api.github.com/repos/obelusk/Null-Sound-Index/releases/tags/v1.0.0)"
-    ]
-  }
-}
